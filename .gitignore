@@ -44,3 +44,4 @@ temp
 
 # MacOS
 *.DS_Store
+dist/
