@@ -43,5 +43,16 @@ temp
 !webpack.*
 
 # MacOS
-*.DS_Store
-dist/
+.build
+DerivedData
+/.previous-build
+xcuserdata
+.DS_Store
+*.xcscmblueprint
+/default.profraw
+*.xcodeproj
+.swiftpm
+/build
+*.pyc
+.docc-build
+.vscode
