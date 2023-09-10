@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "swift-css",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/BinaryBirds/swift-css",
+      "state" : {
+        "revision" : "c5a1741c83ca7eb6dcd0aec0eeefb7a0ca5d8d43",
+        "version" : "1.0.1"
+      }
+    },
+    {
+      "identity" : "swift-html",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/BinaryBirds/swift-html",
+      "state" : {
+        "revision" : "f4fa5bc83fbee8dbd301c6fbb3969437415adad0",
+        "version" : "1.7.0"
+      }
+    }
+  ],
+  "version" : 2
+}
