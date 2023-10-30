@@ -12,10 +12,10 @@
     {
       "identity" : "swift-html",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/BinaryBirds/swift-html",
+      "location" : "https://github.com/romanmazeev/swift-html",
       "state" : {
-        "revision" : "f4fa5bc83fbee8dbd301c6fbb3969437415adad0",
-        "version" : "1.7.0"
+        "branch" : "mastodon-verification",
+        "revision" : "16d672a6c6a5aaaf4fe3229bfba66fdfe5680329"
       }
     }
   ],

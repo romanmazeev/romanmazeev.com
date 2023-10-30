@@ -122,7 +122,7 @@ struct PersonalPage: Page {
                     .href("https://github.com/romanmazeev")
                     .class("social")
 
-                    A  {
+                    A {
                         Img(src: "public/social/twitter.svg", alt: "Twitter")
                     }
                     .href("https://twitter.com/romanmazeev")
@@ -132,6 +132,13 @@ struct PersonalPage: Page {
                         Img(src: "public/social/linkedin.svg", alt: "LinkedIn")
                     }
                     .href("https://www.linkedin.com/in/romanmazeev")
+                    .class("social")
+
+                    A {
+                        Img(src: "public/social/mastodon.svg", alt: "Mastodon")
+                    }
+                    .rel(.me)
+                    .href("https://mastodon.social/@romanmazeev")
                     .class("social")
                 }
             }
