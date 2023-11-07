@@ -42,13 +42,9 @@ struct PersonalPage: Page {
                     Margin(top: .px(12))
                 }
 
-                Class("text-2") {
-                    Margin(top: .px(8))
-                }
-
                 Class("avatar") {
-                    Width(.px(84))
-                    Height(.px(118))
+                    Width(.px(71.66))
+                    Height(.px(100.7))
                     Margin(top: .zero, right: .px(12), bottom: .px(12), left: .zero)
                 }
 
@@ -100,10 +96,8 @@ struct PersonalPage: Page {
                             H1("👋 I'm Roman")
                             H3("Software Engineer")
 
-                            P("I prefer Swift and  related technologies. ❤️ Open Source")
+                            P("Swift and  related technologies. Based in Amsterdam 🇳🇱")
                                 .class("text-1")
-                            P("Based in Amsterdam 🇳🇱")
-                                .class("text-2")
                         }
                     }
                     .class("wrapper")
