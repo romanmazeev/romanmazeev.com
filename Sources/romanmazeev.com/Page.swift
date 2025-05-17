@@ -9,48 +9,61 @@ import Foundation
 import SwiftHtml
 import SwiftCss
 
+enum PageLocation {
+    case root
+    case subdirectory(String)
+
+    var path: String {
+        switch self {
+        case .root:
+            return ""
+        case .subdirectory(let path):
+            return path
+        }
+    }
+}
+
 struct RenderedPage {
-    let stylesheet: String
+    let stylesheet: String?
     let document: String
 }
 
 protocol Page {
-    var stylesheet: Stylesheet { get }
+    var location: PageLocation { get }
+
+    var stylesheet: Stylesheet? { get }
     var document: Document { get }
 }
 
 extension Page {
     func render(minify: Bool, indent: Int) -> RenderedPage {
         .init(
-            stylesheet: StylesheetRenderer(minify: minify, indent: indent).render(stylesheet),
+            stylesheet: stylesheet.map { StylesheetRenderer(minify: minify, indent: indent).render($0) },
             document: DocumentRenderer(minify: minify, indent: indent).render(document)
         )
     }
 }
 
-struct EncodedPage {
-    let stylesheet: Foundation.Data
-    let document: Foundation.Data
-
-    init(page: RenderedPage) {
-        stylesheet = Data(page.stylesheet.utf8)
-        document = Data(page.document.utf8)
-    }
-}
-
-extension Array where Element: Page {
+extension [Page] {
     func generate(minified: Bool) throws {
         try self
-            .map {
-                EncodedPage(page: $0.render(minify: minified, indent: minified ? 0 : expandedIndent))
-            }
             .forEach {
-                if !fileManager.createFile(atPath: buildDirectoryPath.appending("/index.html"), contents: $0.document) {
+                let renderedPage = $0.render(minify: minified, indent: minified ? 0 : expandedIndent)
+                let encodedDocument = Data(renderedPage.document.utf8)
+                let encodedStylesheet = renderedPage.stylesheet.map { Data($0.utf8) }
+
+                if !$0.location.path.isEmpty {
+                    try fileManager.createDirectory(atPath: buildDirectoryPath.appending($0.location.path), withIntermediateDirectories: true)
+                }
+
+                if !fileManager.createFile(atPath: buildDirectoryPath.appending("\($0.location.path)/index.html"), contents: encodedDocument) {
                     throw PageError.documentSaving
                 }
 
-                if !fileManager.createFile(atPath: buildDirectoryPath.appending("/styles.css"), contents: $0.stylesheet) {
-                    throw PageError.stylesheetSaving
+                if let encodedStylesheet {
+                    if !fileManager.createFile(atPath: buildDirectoryPath.appending("\($0.location.path)/styles.css"), contents: encodedStylesheet) {
+                        throw PageError.stylesheetSaving
+                    }
                 }
             }
     }

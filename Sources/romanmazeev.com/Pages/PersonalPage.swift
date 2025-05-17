@@ -9,7 +9,9 @@ import SwiftHtml
 import SwiftCss
 
 struct PersonalPage: Page {
-    let stylesheet: Stylesheet = {
+    let location: PageLocation = .root
+
+    let stylesheet: Stylesheet? = {
 
         return Stylesheet {
             Media {

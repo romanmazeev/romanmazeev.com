@@ -15,7 +15,8 @@ let buildPublicDirectoryPath = addPublic(to: buildDirectoryPath)
 try movePublicDirectory()
 
 try [
-    PersonalPage()
+    PersonalPage(),
+    IDVaultPrivacyPolicyPage()
 ].generate(minified: true)
 
 //
