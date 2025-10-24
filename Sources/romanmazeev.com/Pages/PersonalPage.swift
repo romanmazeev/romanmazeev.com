@@ -45,19 +45,38 @@ struct PersonalPage: Page {
                 }
 
                 Class("avatar") {
-                    Width(.px(71.66))
-                    Height(.px(100.7))
+                    Height(.px(100))
+                    Width(.px(72))
                     Margin(top: .zero, right: .px(12), bottom: .px(12), left: .zero)
                 }
 
                 Footer {
                     Margin(.auto)
                     Display(.flex)
-                    JustifyContent(.center)
+                    FlexDirection(.column)
+                    AlignItems(.center)
                 }
 
                 Class("social") {
                     Padding(.px(12))
+                }
+
+                Class("social-row") {
+                    Display(.flex)
+                    JustifyContent(.center)
+                    AlignItems(.center)
+                }
+
+                Class("id-vault") {
+                    Display(.flex)
+                    JustifyContent(.center)
+                    AlignItems(.center)
+                    Margin(top: .px(12), right: .zero, bottom: .zero, left: .zero)
+                }
+
+                Class("id-vault-img") {
+                    Width(.px(40))
+                    Height(.px(40))
                 }
             }
 
@@ -106,36 +125,46 @@ struct PersonalPage: Page {
                 }
 
                 Footer {
-                    A {
-                        Img(src: "public/social/mail.svg", alt: "Mail")
+                    Div {
+                        A {
+                            Img(src: "public/social/mail.svg", alt: "Mail")
+                        }
+                        .href("mailto:me@romanmazeev.com")
+                        .class("social")
+
+                        A {
+                            Img(src: "public/social/github.svg", alt: "GitHub")
+                        }
+                        .href("https://github.com/romanmazeev")
+                        .class("social")
+
+                        A {
+                            Img(src: "public/social/twitter.svg", alt: "Twitter")
+                        }
+                        .href("https://twitter.com/romanmazeev")
+                        .class("social")
+
+                        A {
+                            Img(src: "public/social/linkedin.svg", alt: "LinkedIn")
+                        }
+                        .href("https://www.linkedin.com/in/romanmazeev")
+                        .class("social")
+
+                        A {
+                            Img(src: "public/social/mastodon.svg", alt: "Mastodon")
+                        }
+                        .rel(.me)
+                        .href("https://mastodon.social/@romanmazeev")
+                        .class("social")
                     }
-                    .href("mailto:me@romanmazeev.com")
-                    .class("social")
+                    .class("social-row")
 
                     A {
-                        Img(src: "public/social/github.svg", alt: "GitHub")
+                        Img(src: "public/IDVaultAppIcon.png", alt: "ID Vault")
+                            .class("id-vault-img")
                     }
-                    .href("https://github.com/romanmazeev")
-                    .class("social")
-
-                    A {
-                        Img(src: "public/social/twitter.svg", alt: "Twitter")
-                    }
-                    .href("https://twitter.com/romanmazeev")
-                    .class("social")
-
-                    A {
-                        Img(src: "public/social/linkedin.svg", alt: "LinkedIn")
-                    }
-                    .href("https://www.linkedin.com/in/romanmazeev")
-                    .class("social")
-
-                    A {
-                        Img(src: "public/social/mastodon.svg", alt: "Mastodon")
-                    }
-                    .rel(.me)
-                    .href("https://mastodon.social/@romanmazeev")
-                    .class("social")
+                    .href("https://apps.apple.com/app/id6744865269")
+                    .class("id-vault")
                 }
             }
         }
